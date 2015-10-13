@@ -1,0 +1,48 @@
+We have to distinguish two different ADT's, according to the kind of element they
+will hold. Both of them will use a pointer implementation, since we need them 
+to change their size dynamically.
+
+Positive odd numbers:
+	As a requirement, positive odd numbers will be held into a stack. This stack
+will hold natural numbers only, and will use only the basic operations push, pop, makenull
+and empty.
+
+	spec STACK
+	genres stack, natural
+	Operations
+		push: stack natural -> stack
+		pop: stack -> natural
+		makenull: stack -> stack
+		empty: stack -> boolean
+	endspec
+	
+	With this ADT, we can easily handle incoming positive odd numbers, adding them to
+the stack through the use of push. We can then use pop to obtain the content of the first
+position, which will be deleted. makenull and empty exist for auxiliary purposes; namely,
+makenull will be used to initialize the stack and empty will potentially be used in some 
+checks.
+
+
+
+Positive even numbers and negative numbers:
+
+	ADT will be shared amongst both types of number, as they will be both held into 
+queues with the same function. They will, however, use multiple instances of it, thus 
+complying with the requirement for the assignment.This ADT will use the standard enqueue,
+dequeue, makenull and empty, as well as a new operation named list, which will handle 
+printing the contents of the queue.
+
+	spec QUEUE
+	genres queue, integer
+	Operations
+		enqueue: queue integer -> queue
+		dequeue: queue -> integer
+		makenull: queue -> queue
+		empty: queue -> boolean
+		list: queue -> string
+	endspec
+
+enqueue will handle number insertion, and dequeue will handle number extraction (used, for 
+instance, for saving). makenull and empty will have a similar use to their counterparts in
+the stack. Finally, list will create a string representing the contents of the queue, so that
+they can be easily printed.
