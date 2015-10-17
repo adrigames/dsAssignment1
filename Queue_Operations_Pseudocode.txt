@@ -1,0 +1,17 @@
+QUEUE OPERATIONS PSEUDOCODE:
+
+public void queue::enqueue(i:integer)
+	newCell:^celltype
+	allocate(newCell)
+	newCell^.value := i
+	rear^.next=newCell
+	rear=newCell
+
+public integer queue::dequeue()
+	aux:^celltype
+	val:integer
+	aux:=front
+	val:=front^.value
+	front:=front^.next
+	free(aux)
+	return val
