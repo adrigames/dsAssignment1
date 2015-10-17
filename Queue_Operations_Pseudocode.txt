@@ -4,14 +4,48 @@ public void queue::enqueue(i:integer)
 	newCell:^celltype
 	allocate(newCell)
 	newCell^.value := i
-	rear^.next=newCell
-	rear=newCell
+	if not this.empty()			{Check if queue is empty}
+		rear^.next=newCell		{If not, add element normally}
+	else
+		front:=newCell			{If it is, make the front point to the new cell}
+	endelse
+	rear:=newCell				{Whatever the case, rear points to the new cell}
+endmethod
 
 public integer queue::dequeue()
 	aux:^celltype
 	val:integer
+	if not this.empty()			{Check if queue is empty}
+		aux:=front			{If not, return the first element (front)}
+		val:=front^.value
+		front:=front^.next
+		dispose(aux)
+		return val
+	else
+		error("This queue is empty!")	{If it is, throw an error}
+	endelse
+endmethod
+
+public void queue::makenull()
+	while not this.empty()			{Keep dequeueing while the stack is not empty}
+		this.dequeue
+	endwhile
+endmethod
+
+public boolean queue::empty()
+	return front=rear=null			{Return true when both front and rear are NULL}
+endmethod
+
+public string queue::list()
+	str:string
+	aux:^celltype
 	aux:=front
-	val:=front^.value
-	front:=front^.next
-	free(aux)
-	return val
+	while aux not null
+		str.insert((char)aux^.value)	{Insert value}
+		if aux^.next not null		{Check if it's the last}
+			str.insert(',')		{If not, insert ','}
+		else
+			str.insert('.')		{If it is, insert '.'}
+	endwhile
+	return str
+endmethod
