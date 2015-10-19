@@ -1,0 +1,53 @@
+Stack explanation:
+The stack will be implemented in a fairly standard way. In this case, we don't need any 
+additional operations, as push and pop cover our needs to insert and retrieve data from
+it. makenull and empty will be kept as auxiliary operations: makenull will allow us to 
+initialize the stack, while empty will allow us to make certain security checks in order
+to prevent null pointer operations, for example. This class will have a pointer to a 
+cellType element called top, which will keep track of the last element inserted in the
+stack. Each cellType is made up of a value, in this case an integer, and a pointer to
+the next cellType, with the last cellType in the stack (this is, the first one to be 
+inserted) pointing to null as the following cell.
+
+push works as usual: it takes an integer (which we will have checked prior to insertion)
+and makes it the new top of the stack, pointing to the previous top.
+pop, also, works the standard way: it retrieves the current top and returns its value,
+disposing of the cell and making top point to the following element in line.
+makenull simply pops the elements held in the stack until there are not anymore. The 
+value of said elements is never saved, as what we want is to make top point to null 
+while freeing the memory occupied by the cells previously created.
+empty simply returns true if top points to null and false any other wise.
+
+Queue explanation:
+For the queues, we use an slightly modified ADT: it adds an operation, called list, which
+will now be explained. Queue contains two pointers, front and rear, to cellType elements,
+composed of a value (integer) and a pointer to the following one, to keep track of where
+insertion and deletion will take place. Aside from the already mentioned list operation,
+the queue class implements the enqueue, dequeue, makenull and empty methods.
+
+enqueue simply creates a new cell, receiving an integer as parameter, and sets it as the
+new rear.
+dequeue returns the value of the cell pointed to by front, and makes front point to the 
+next cell while disposing of the former front.
+makenull, once again, dequeues every element of the queue in order to make both front and
+rear point to null while freeing the memory used by them.
+empty will return true if both front and rear point to null, and false any other wise.
+list iterates through the whole queue, registering each value and formating it into a
+string. Then, it returns the string.
+
+Program explanation:
+The program itself will read a file, "input.numbers.txt" and parse its contents to add them
+to either the stack or one of the queues. It will then present a menu to the user, in which
+the following operations will be listed:
+	1.-PROCESS NUMBER: takes a number and, depending on its value, determines where it 
+will be stored. It is then inserted in the corresponding data structure.
+	2.-QUERY STACK: this operation simply pops the stack and display the result.
+	3.-LIST EVEN QUEUE: this operation displays the result of executing the list method
+of the even queue.
+	4.-LIST NEGATIVE QUEUE: this operation displays the result of executing the list 
+method of the negative queue.
+	5.-EXIT: this operation simply finishes execution.
+If the user selects an invalid option (such as option 6), an error will be issued and the
+user will be asked to select again.
+The program loops between the menu and the execution of operations until EXIT is selected.
+At that time, the loop breaks and the program is terminated.
