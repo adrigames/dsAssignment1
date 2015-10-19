@@ -2,13 +2,13 @@
 #define QUEUE_HPP
 
 #include <string>
-#include <runtime_error>
+#include <stdexcept>
 
 struct cellType
 {
     int value;
-    celltype* next;
-    }
+    cellType* next;
+    };
 
 class Queue
 {

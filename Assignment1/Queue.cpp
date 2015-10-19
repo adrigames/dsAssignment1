@@ -26,15 +26,15 @@ void Queue::makenull(void)
     while(!this->empty()){      //While there are elements left
         this->dequeue();        //take elements out
         }
-    }catch(runtime_error r){    //If an error happens,
+    }catch(std::runtime_error r){    //If an error happens,
         return;                 //exit.
         }
 }
 
 void Queue::enqueue(long int newElement)
 {
-    cellType aux = new cellType;
-    cellType.value = newElement;
+    cellType* aux = new cellType;
+    aux->value = newElement;
     if(this->empty()){                      //If queue is empty
         front=aux;                          //Make aux the first element
         }
@@ -47,7 +47,7 @@ void Queue::enqueue(long int newElement)
 
 long int Queue::dequeue(void)
 {
-    cellType aux = NULL;
+    cellType* aux = NULL;
     int value = 0;
     if(this->empty())                                                   //If there are no elements
         throw std::runtime_error(std::string("This queue is empty!\n"));//Throw exception
@@ -61,7 +61,7 @@ long int Queue::dequeue(void)
 std::string Queue::list(void)
 {
     std::string str = "";
-    cellType aux = front;
+    cellType* aux = front;
     while(aux != NULL)                      //Stop loop when aux points to NULL
         {
             str+=aux->value;                //Append value

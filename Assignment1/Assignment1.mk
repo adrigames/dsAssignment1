@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=Assignment1
 ConfigurationName      :=Debug
-WorkspacePath          := "C:\Users\Adrian de Juan\Documents\Assignment1\dsAssignment1"
-ProjectPath            := "C:\Users\Adrian de Juan\Documents\Assignment1\dsAssignment1\Assignment1"
+WorkspacePath          := "C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1"
+ProjectPath            := "C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Adrian de Juan
-Date                   :=13/10/2015
+User                   :=R
+Date                   :=19/10/2015
 CodeLitePath           :="C:\Program Files\CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) 
 
 
 
@@ -94,12 +94,20 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Adrian de Juan/Documents/Assignment1/dsAssignment1/Assignment1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/R/Documents/LabDS/Practice 1/Practice1/dsAssignment1/dsAssignment1/Assignment1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM "main.cpp"
 
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) "main.cpp"
+
+$(IntermediateDirectory)/Queue.cpp$(ObjectSuffix): Queue.cpp $(IntermediateDirectory)/Queue.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/R/Documents/LabDS/Practice 1/Practice1/dsAssignment1/dsAssignment1/Assignment1/Queue.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Queue.cpp$(DependSuffix): Queue.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Queue.cpp$(DependSuffix) -MM "Queue.cpp"
+
+$(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix): Queue.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix) "Queue.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
