@@ -5,8 +5,8 @@
 ## Debug
 ProjectName            :=Assignment1
 ConfigurationName      :=Debug
-WorkspacePath          := "C:\Users\Adrian de Juan\Documents\Assignment1"
-ProjectPath            := "C:\Users\Adrian de Juan\Documents\Assignment1\Assignment1"
+WorkspacePath          := "C:\Users\Adrian de Juan\Documents\Assignment1\dsAssignment1"
+ProjectPath            := "C:\Users\Adrian de Juan\Documents\Assignment1\dsAssignment1\Assignment1"
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
@@ -94,7 +94,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Adrian de Juan/Documents/Assignment1/Assignment1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/Adrian de Juan/Documents/Assignment1/dsAssignment1/Assignment1/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM "main.cpp"
 
