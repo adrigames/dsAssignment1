@@ -94,5 +94,6 @@
     <File Name="main.cpp"/>
     <File Name="Queue.hpp"/>
     <File Name="Queue.cpp"/>
+    <File Name="src/cellType.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

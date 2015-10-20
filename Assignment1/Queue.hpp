@@ -3,12 +3,7 @@
 
 #include <string>
 #include <stdexcept>
-
-struct cellType
-{
-    int value;
-    cellType* next;
-    };
+#include "cellType.h"
 
 class Queue
 {
