@@ -9,11 +9,37 @@ void Exit(bool* exit)
     return;
     }
 
+void insertInStructure(int i)
+//Determines apropiate structure and inserts data
+{
+    std::cout<<"Input: "<<i<<std::endl;
+    std::cout<<"Not yet implemented."<<std::endl;
+    }
+    
+void processNumber()
+//Process number function
+{
+    int input = 0;
+    do
+    {
+        if(std::cin.fail())
+        {
+            std::cout<<"Invalid input detected.\nPlease, insert number."<<std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+        std::cout<<"Enter number: "<<std::endl;
+        std::cin>>input;
+        }while(std::cin.fail());
+        insertInStructure(input);
+    }
+
 void executeOption(int option, bool* exit)
 {
     switch(option)
     {
-        case 1:
+        case 1: processNumber();
+                break;
         case 2:
         case 3:
         case 4:

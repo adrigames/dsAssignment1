@@ -1,0 +1,4 @@
+.codelite/Assignment1.tags
+*.o
+Assignment1/Debug/main.cpp.o.d
+*.exe
