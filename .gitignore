@@ -2,3 +2,7 @@
 *.o
 Assignment1/Debug/main.cpp.o.d
 *.exe
+*.tags
+*.o
+Assignment1/Debug/main.cpp.o.d
+*.d
