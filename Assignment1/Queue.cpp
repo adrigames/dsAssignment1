@@ -62,12 +62,15 @@ long int Queue::dequeue(void)
 std::string Queue::list(void)
 {
     std::string* str = new std::string();
+    std::ostringstream convert;
     if(!empty()){
     cellType* aux = front;
-    std::cout<<aux->value<<std::endl;
     while(aux != NULL)                      //Stop loop when aux points to NULL
         {
-            *str+=convertToString(aux->value);                //Append value
+            convert<<aux->value;            //Convert to string
+            *str+=convert.str();                   //Append value
+            convert.clear();
+            convert.str("");
             if(aux->next != NULL)           //Check for end of queue
                 {
                     *str+=',';               //If not end, append ','

@@ -95,6 +95,5 @@
     <File Name="Queue.hpp"/>
     <File Name="Queue.cpp"/>
     <File Name="auxiliary.h"/>
-    <File Name="src/auxiliary.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
