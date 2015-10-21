@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1.workspace">
-  <int Value="0" Name="m_selectedTab"/>
+  <int Value="4" Name="m_selectedTab"/>
   <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\main.cpp" Name="FileName"/>
-      <int Value="54" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <int Value="48" Name="FirstVisibleLine"/>
+      <int Value="62" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
@@ -19,8 +19,22 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\Queue.cpp" Name="FileName"/>
-      <int Value="32" Name="FirstVisibleLine"/>
-      <int Value="36" Name="CurrentLine"/>
+      <int Value="67" Name="FirstVisibleLine"/>
+      <int Value="81" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\auxiliary.h" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="12" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\src\auxiliary.cpp" Name="FileName"/>
+      <int Value="6" Name="FirstVisibleLine"/>
+      <int Value="20" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

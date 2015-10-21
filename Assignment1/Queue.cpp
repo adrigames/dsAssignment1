@@ -42,6 +42,7 @@ void Queue::enqueue(long int newElement)
         {
             rear->next = aux;               //Make the previous one point to aux
             }
+    aux->next = NULL;
     rear = aux;                             //In any case, rear will point to aux
     }
 
@@ -60,22 +61,25 @@ long int Queue::dequeue(void)
 
 std::string Queue::list(void)
 {
-    std::string str = "";
+    std::string* str = new std::string();
+    if(!empty()){
     cellType* aux = front;
+    std::cout<<aux->value<<std::endl;
     while(aux != NULL)                      //Stop loop when aux points to NULL
         {
-            str+=aux->value;                //Append value
+            *str+=convertToString(aux->value);                //Append value
             if(aux->next != NULL)           //Check for end of queue
                 {
-                    str+=',';               //If not end, append ','
+                    *str+=',';               //If not end, append ','
                     }
             else
                 {
-                    str+='.';               //If end, append '.'
+                    *str+='.';               //If end, append '.'
                     }
             aux = aux->next;                //Iterate
             }
-    if(str.compare("")==0)                  //Check if string is empty
-        str = "The queue is empty";         //If so, write error message
-    return str;                             //Return the string
+    }
+    else                  //Check if string is empty
+        *str = "The queue is empty";         //If so, write error message
+    return *str;                             //Return the string
     }
