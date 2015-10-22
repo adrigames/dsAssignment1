@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=R
-Date                   :=21/10/2015
+Date                   :=22/10/2015
 CodeLitePath           :="C:\Program Files\CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Queue.cpp$(ObjectSuffix) $(IntermediateDirectory)/src_auxiliary.cpp$(ObjectSuffix) 
 
 
 
@@ -108,6 +108,14 @@ $(IntermediateDirectory)/Queue.cpp$(DependSuffix): Queue.cpp
 
 $(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix): Queue.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Queue.cpp$(PreprocessSuffix) "Queue.cpp"
+
+$(IntermediateDirectory)/src_auxiliary.cpp$(ObjectSuffix): src/auxiliary.cpp $(IntermediateDirectory)/src_auxiliary.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/R/Documents/LabDS/Practice 1/Practice1/dsAssignment1/dsAssignment1/Assignment1/src/auxiliary.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/src_auxiliary.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/src_auxiliary.cpp$(DependSuffix): src/auxiliary.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_auxiliary.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/src_auxiliary.cpp$(DependSuffix) -MM "src/auxiliary.cpp"
+
+$(IntermediateDirectory)/src_auxiliary.cpp$(PreprocessSuffix): src/auxiliary.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_auxiliary.cpp$(PreprocessSuffix) "src/auxiliary.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
