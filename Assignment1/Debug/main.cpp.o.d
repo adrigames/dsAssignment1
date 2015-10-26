@@ -1,5 +1,5 @@
-Debug/main.cpp.o: main.cpp Queue.hpp cellType.h
+Debug/main.cpp.o: main.cpp Queue.hpp auxiliary.h
 
 Queue.hpp:
 
-cellType.h:
+auxiliary.h:

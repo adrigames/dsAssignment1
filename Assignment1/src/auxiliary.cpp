@@ -28,4 +28,3 @@ int parse(char c, long int* v, int index, bool* prevIsNumber)
         }
     return 1;
     }
-

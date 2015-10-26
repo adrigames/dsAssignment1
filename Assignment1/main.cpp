@@ -1,15 +1,10 @@
 #include "Queue.hpp"
 #include <iostream>
+#include <fstream>
 #include <limits>
 #include <windows.h>
 
-void Exit(bool* exit)
-{
-    *exit = true;
-    return;
-    }
-
-void insertInStructure(int i, Queue* even, Queue* negative)
+void insertInStructure(long int i, Queue* even, Queue* negative)
 //Determines apropiate structure and inserts data
 {
     std::cout<<"Input: "<<i<<std::endl;
@@ -20,11 +15,55 @@ void insertInStructure(int i, Queue* even, Queue* negative)
     else
     std::cout<<"Not yet implemented."<<std::endl;
     }
+
+void parseLine(std::string line, Queue* even, Queue* negative)
+{
+    int i=0, index = 0;
+    bool isNumber = false;
+    long int *lineArray = new long int[line.length()/2];
+                for(i=0; i<line.length(); i++)
+                {
+                    index += parse(line[i], lineArray, index, &isNumber);
+                    }
+                for(i=0; i<index; i++)
+                {
+                    std::cout<<lineArray[i]<<std::endl;
+                    insertInStructure(lineArray[i], even, negative);
+                    }
+    }
+
+void saveData(Queue* even, Queue* negative)
+{
+    
+    }
+    
+void loadData(Queue* even, Queue* negative)
+{
+    std::ifstream input;
+    std::string line;;
+    input.open("input.numbers.txt");
+    if(input.is_open())                 //Check for errors
+    {
+        while(getline(input, line))
+            {
+                parseLine(line, even, negative);
+                }
+        }
+    else
+        {
+            std::cout<<"ERROR: COULD NOT LOCATE INPUT FILE"<<std::endl;
+            }
+    }
+void Exit(bool* exit)
+{
+    *exit = true;
+    return;
+    }
     
 void processNumber(Queue* even, Queue* negative)
 //Process number function
 {
-    int input = 0;
+    long int input = 0;
     do
     {
         if(std::cin.fail())
@@ -103,6 +142,8 @@ int main(int argc, char **argv)
     bool exit = false;
     Queue* even = new Queue();
     Queue* negative = new Queue();
+    loadData(even, negative);
+    system("pause");
     while(!exit)        //Execution cycle
         drawMenu(&exit, even, negative);
 	return 0;
