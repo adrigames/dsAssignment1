@@ -1,1 +1,1 @@
-./Debug/main.cpp.o ./Debug/Queue.cpp.o ./Debug/src_auxiliary.cpp.o   
+./Debug/main.cpp.o ./Debug/Queue.cpp.o   

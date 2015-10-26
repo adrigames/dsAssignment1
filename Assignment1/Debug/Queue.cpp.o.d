@@ -1,5 +1,3 @@
-Debug/Queue.cpp.o: Queue.cpp Queue.hpp auxiliary.h
+Debug/Queue.cpp.o: Queue.cpp Queue.hpp
 
 Queue.hpp:
-
-auxiliary.h:

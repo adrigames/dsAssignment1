@@ -9,19 +9,14 @@ void Exit(bool* exit)
     return;
     }
 
-void insertInStructure(int i, Queue* even, Queue* negative)
+void insertInStructure(int i)
 //Determines apropiate structure and inserts data
 {
     std::cout<<"Input: "<<i<<std::endl;
-    if(i<0) 
-        negative->enqueue(i);
-    else if (i%2==0)
-        even->enqueue(i);
-    else
     std::cout<<"Not yet implemented."<<std::endl;
     }
     
-void processNumber(Queue* even, Queue* negative)
+void processNumber()
 //Process number function
 {
     int input = 0;
@@ -36,38 +31,27 @@ void processNumber(Queue* even, Queue* negative)
         std::cout<<"Enter number: "<<std::endl;
         std::cin>>input;
         }while(std::cin.fail());
-        insertInStructure(input, even, negative);
+        insertInStructure(input);
     }
 
-void showEven(Queue* even)
-{
-    std::cout<<even->list()<<std::endl;
-    }
-
-void showNegative(Queue* negative)
-{
-    std::cout<<negative->list()<<std::endl;
-    }
-
-void executeOption(int option, bool* exit, Queue* even, Queue* negative)
+void executeOption(int option, bool* exit)
 {
     switch(option)
     {
-        case 1: processNumber(even, negative);
+        case 1: processNumber();
                 break;
-        case 2: std::cout<<"Not yet implemented."<<std::endl;
-                break;
-        case 3: showEven(even);
-                break;
-        case 4: showNegative(negative);
-                break;
+        case 2:
+        case 3:
+        case 4:
+            std::cout<<"Not yet implemented."<<std::endl;
+            break;
         case 5: Exit(exit);
                 break;
         default: std::cout<<"Invalid option.\nInsert new option."<<std::endl;
         }
     }
 
-void drawMenu(bool* exit, Queue* even, Queue* negative)
+void drawMenu(bool* exit)
 //This function draws the user menu and parses user's selection
 {
     system("cls"); //Clean screen 
@@ -87,7 +71,7 @@ void drawMenu(bool* exit, Queue* even, Queue* negative)
     std::cout<<'\t'<<(char)200<<(char)205<<(char)188<<std::endl<<std::endl;
     std::cout<<"\t\tOption: ";
     if(std::cin>>option)
-        executeOption(option, exit, even, negative);
+        executeOption(option, exit);
     else
     {
         std::cout<<"INPUT ERROR: INVALID INPUT"<<std::endl; //Throw error
@@ -101,9 +85,7 @@ void drawMenu(bool* exit, Queue* even, Queue* negative)
 int main(int argc, char **argv)
 {
     bool exit = false;
-    Queue* even = new Queue();
-    Queue* negative = new Queue();
     while(!exit)        //Execution cycle
-        drawMenu(&exit, even, negative);
+        drawMenu(&exit);
 	return 0;
 }

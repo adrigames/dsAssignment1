@@ -1,11 +1,9 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
-#include <iostream>
-#include <stdexcept>
 #include <string>
-#include <sstream>
-#include "auxiliary.h"
+#include <stdexcept>
+#include "cellType.h"
 
 class Queue
 {
