@@ -96,5 +96,7 @@
     <File Name="Queue.cpp"/>
     <File Name="auxiliary.h"/>
     <File Name="src/auxiliary.cpp"/>
+    <File Name="Stack.cpp"/>
+    <File Name="Stack.hpp"/>
   </VirtualDirectory>
 </CodeLite_Project>

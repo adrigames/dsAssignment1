@@ -6,3 +6,5 @@ Assignment1/Debug/main.cpp.o.d
 *.o
 Assignment1/Debug/main.cpp.o.d
 *.d
+Assignment1/Stack.cpp
+*.hpp

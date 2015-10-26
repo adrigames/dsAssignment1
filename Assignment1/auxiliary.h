@@ -9,6 +9,6 @@ struct cellType
     cellType* next;
     };
 
-int parse(char c, long int*, int, bool*);
+int parse(char c, long int*, int, bool*, bool*);
 
 #endif

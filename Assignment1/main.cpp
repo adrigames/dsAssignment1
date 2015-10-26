@@ -1,10 +1,11 @@
 #include "Queue.hpp"
+#include "Stack.hpp"
 #include <iostream>
 #include <fstream>
 #include <limits>
 #include <windows.h>
 
-void insertInStructure(long int i, Queue* even, Queue* negative)
+void insertInStructure(long int i, Stack* odd, Queue* even, Queue* negative)
 //Determines apropiate structure and inserts data
 {
     std::cout<<"Input: "<<i<<std::endl;
@@ -13,31 +14,91 @@ void insertInStructure(long int i, Queue* even, Queue* negative)
     else if (i%2==0)
         even->enqueue(i);
     else
-    std::cout<<"Not yet implemented."<<std::endl;
+        odd->push(i);
     }
 
-void parseLine(std::string line, Queue* even, Queue* negative)
+void parseLine(std::string line, Stack* odd, Queue* even, Queue* negative)
 {
     int i=0, index = 0;
-    bool isNumber = false;
+    bool isNumber = false, isNegative = false;
     long int *lineArray = new long int[line.length()/2];
                 for(i=0; i<line.length(); i++)
                 {
-                    index += parse(line[i], lineArray, index, &isNumber);
+                    index += parse(line[i], lineArray, index, &isNumber, &isNegative);
                     }
                 for(i=0; i<index; i++)
                 {
                     std::cout<<lineArray[i]<<std::endl;
-                    insertInStructure(lineArray[i], even, negative);
+                    insertInStructure(lineArray[i], odd, even, negative);
                     }
     }
 
-void saveData(Queue* even, Queue* negative)
+std::string convertNumber(long int i, bool isEmpty)
 {
-    
+    std::string rtrn = "";
+    std::ostringstream convert;
+    convert<<i;
+    rtrn += convert.str();
+    convert.str("");
+    convert.clear();
+    if(!isEmpty)
+        {
+            rtrn+=',';
+            }
+        else
+        {
+            rtrn+='.';
+            }
+    return rtrn;
+    }
+
+std::string createStackString(Stack* odd)
+{
+    std::string text = "";
+    int aux = 0;
+    bool aux2 = false;
+    while(!odd->empty())
+    {
+        aux = odd->pop();
+        aux2 = odd->empty();
+        text += convertNumber(aux, aux2);
+        }
+    return text;
+    }
+
+void saveData(Stack* odd, Queue* even, Queue* negative)
+{
+    std::ofstream output;
+    std::cout<<"Converting stack..."<<std::endl;
+    std::string data = createStackString(odd);
+    std::cout<<"Finished converting."<<std::endl;
+    data += '\n';
+    std::cout<<"Converting even..."<<std::endl;
+    data += even->list();
+    std::cout<<"Finished converting."<<std::endl;
+    data += '\n';
+    std::cout<<"Converting negative..."<<std::endl;
+    data += negative->list();
+    std::cout<<"Finished converting."<<std::endl;
+    data += '\n';
+    std::cout<<"Opening file..."<<std::endl;
+    output.open("output.numbers.txt");
+    if(output.is_open())
+    {
+        std::cout<<"File succesfully opened."<<std::endl;
+        std::cout<<"Writing data..."<<std::endl;
+        output<<data;
+        std::cout<<"Data successfully written."<<std::endl;
+        output.close();
+        }
+    else
+    {
+        std::cout<<"ERROR: COULD NOT WRITE FILE"<<std::endl;
+        system("PAUSE");
+        }
     }
     
-void loadData(Queue* even, Queue* negative)
+void loadData(Stack* odd, Queue* even, Queue* negative)
 {
     std::ifstream input;
     std::string line;;
@@ -46,21 +107,24 @@ void loadData(Queue* even, Queue* negative)
     {
         while(getline(input, line))
             {
-                parseLine(line, even, negative);
+                parseLine(line, odd, even, negative);
                 }
+        input.close();
         }
     else
         {
             std::cout<<"ERROR: COULD NOT LOCATE INPUT FILE"<<std::endl;
             }
     }
-void Exit(bool* exit)
+void Exit(bool* exit, Stack* odd, Queue* even, Queue* negative)
 {
+    saveData(odd, even, negative);
     *exit = true;
+    std::cout<<"Exiting program..."<<std::endl;
     return;
     }
     
-void processNumber(Queue* even, Queue* negative)
+void processNumber(Stack* odd, Queue* even, Queue* negative)
 //Process number function
 {
     long int input = 0;
@@ -75,7 +139,7 @@ void processNumber(Queue* even, Queue* negative)
         std::cout<<"Enter number: "<<std::endl;
         std::cin>>input;
         }while(std::cin.fail());
-        insertInStructure(input, even, negative);
+        insertInStructure(input, odd, even, negative);
     }
 
 void showEven(Queue* even)
@@ -88,25 +152,25 @@ void showNegative(Queue* negative)
     std::cout<<negative->list()<<std::endl;
     }
 
-void executeOption(int option, bool* exit, Queue* even, Queue* negative)
+void executeOption(int option, bool* exit, Stack* odd, Queue* even, Queue* negative)
 {
     switch(option)
     {
-        case 1: processNumber(even, negative);
+        case 1: processNumber(odd, even, negative);
                 break;
-        case 2: std::cout<<"Not yet implemented."<<std::endl;
+        case 2: std::cout<<odd->pop()<<std::endl;
                 break;
         case 3: showEven(even);
                 break;
         case 4: showNegative(negative);
                 break;
-        case 5: Exit(exit);
+        case 5: Exit(exit, odd, even, negative);
                 break;
         default: std::cout<<"Invalid option.\nInsert new option."<<std::endl;
         }
     }
 
-void drawMenu(bool* exit, Queue* even, Queue* negative)
+void drawMenu(bool* exit, Stack* odd, Queue* even, Queue* negative)
 //This function draws the user menu and parses user's selection
 {
     system("cls"); //Clean screen 
@@ -126,7 +190,7 @@ void drawMenu(bool* exit, Queue* even, Queue* negative)
     std::cout<<'\t'<<(char)200<<(char)205<<(char)188<<std::endl<<std::endl;
     std::cout<<"\t\tOption: ";
     if(std::cin>>option)
-        executeOption(option, exit, even, negative);
+        executeOption(option, exit, odd, even, negative);
     else
     {
         std::cout<<"INPUT ERROR: INVALID INPUT"<<std::endl; //Throw error
@@ -140,11 +204,12 @@ void drawMenu(bool* exit, Queue* even, Queue* negative)
 int main(int argc, char **argv)
 {
     bool exit = false;
+    Stack* odd = new Stack();
     Queue* even = new Queue();
     Queue* negative = new Queue();
-    loadData(even, negative);
-    system("pause");
+    loadData(odd, even, negative);
+    system("PAUSE");
     while(!exit)        //Execution cycle
-        drawMenu(&exit, even, negative);
+        drawMenu(&exit, odd, even, negative);
 	return 0;
 }
