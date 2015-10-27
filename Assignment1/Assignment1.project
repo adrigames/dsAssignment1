@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="Assignment1" InternalType="Console">
+  <Plugins>
+    <Plugin Name="CMakePlugin">
+      <![CDATA[[{
+  "name": "Debug",
+  "enabled": false,
+  "buildDirectory": "build",
+  "sourceDirectory": "$(ProjectPath)",
+  "generator": "",
+  "buildType": "",
+  "arguments": [],
+  "parentProject": ""
+ }]]]>
+    </Plugin>
+    <Plugin Name="qmake">
+      <![CDATA[00010001N0005Debug000000000000]]>
+    </Plugin>
+  </Plugins>
   <Description/>
   <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="main.cpp"/>
+    <File Name="Queue.hpp"/>
+    <File Name="Queue.cpp"/>
+    <File Name="auxiliary.h"/>
+    <File Name="src/auxiliary.cpp"/>
+    <File Name="Stack.cpp"/>
+    <File Name="Stack.hpp"/>
+  </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -90,13 +116,4 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src">
-    <File Name="main.cpp"/>
-    <File Name="Queue.hpp"/>
-    <File Name="Queue.cpp"/>
-    <File Name="auxiliary.h"/>
-    <File Name="src/auxiliary.cpp"/>
-    <File Name="Stack.cpp"/>
-    <File Name="Stack.hpp"/>
-  </VirtualDirectory>
 </CodeLite_Project>

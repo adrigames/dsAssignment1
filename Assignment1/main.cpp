@@ -8,50 +8,52 @@
 void insertInStructure(long int i, Stack* odd, Queue* even, Queue* negative)
 //Determines apropiate structure and inserts data
 {
-    std::cout<<"Input: "<<i<<std::endl;
-    if(i<0) 
-        negative->enqueue(i);
-    else if (i%2==0)
-        even->enqueue(i);
-    else
-        odd->push(i);
+    std::cout<<"Input: "<<i<<std::endl;             //Print inputted number
+    if(i<0)                                         //If negative
+        negative->enqueue(i);                       //Insert in negative queue
+    else if (i%2==0)                                //If positive and even
+        even->enqueue(i);                           //Insert in even queue
+    else                                            //If positive and odd
+        odd->push(i);                               //Insert in stack
     }
 
 void parseLine(std::string line, Stack* odd, Queue* even, Queue* negative)
+//This function process each line found in the input file
 {
     int i=0, index = 0;
     bool isNumber = false, isNegative = false;
-    long int *lineArray = new long int[line.length()/2];
-                for(i=0; i<line.length(); i++)
+    long int *lineArray = new long int[line.length()/2];                                //Define length of array
+                for(i=0; i<(int)line.length(); i++)                                     //Iterate through line
                 {
-                    index += parse(line[i], lineArray, index, &isNumber, &isNegative);
+                    index += parse(line[i], lineArray, index, &isNumber, &isNegative);  //Convert char to number
                     }
-                for(i=0; i<index; i++)
+                for(i=0; i<index; i++)                                                  //Iterate through array
                 {
-                    insertInStructure(lineArray[i], odd, even, negative);
+                    insertInStructure(lineArray[i], odd, even, negative);               //Insert in structure
                     }
     }
 
-std::string convertNumber(long int i, bool isEmpty)
+std::string convertNumber(long int i, bool isEmpty)                                     //Convert number to string
 {
     std::string rtrn = "";
     std::ostringstream convert;
-    convert<<i;
-    rtrn += convert.str();
-    convert.str("");
+    convert<<i;                 //Insert int in stream
+    rtrn += convert.str();      //Add stream to string
+    convert.str("");            //Clear stream
     convert.clear();
-    if(!isEmpty)
+    if(!isEmpty)                //Is next is not null
         {
-            rtrn+=',';
+            rtrn+=',';          //Add ',' to string
             }
-        else
+        else                    //If it is
         {
-            rtrn+='.';
+            rtrn+='.';          //Add '.' to string
             }
-    return rtrn;
+    return rtrn;                //Return string
     }
 
 std::string createStackString(Stack* odd)
+//This function creates a string from the stack
 {
     std::string text = "";
     int aux = 0;
@@ -100,7 +102,7 @@ void saveData(Stack* odd, Queue* even, Queue* negative)
 void loadData(Stack* odd, Queue* even, Queue* negative)
 {
     std::ifstream input;
-    std::string line;;
+    std::string line; 
     input.open("input.numbers.txt");
     if(input.is_open())                 //Check for errors
     {
@@ -118,6 +120,9 @@ void loadData(Stack* odd, Queue* even, Queue* negative)
 void Exit(bool* exit, Stack* odd, Queue* even, Queue* negative)
 {
     saveData(odd, even, negative);
+    delete(odd);
+    delete(even);
+    delete(negative);
     *exit = true;
     std::cout<<"Exiting program..."<<std::endl;
     return;
@@ -152,23 +157,24 @@ void showNegative(Queue* negative)
     }
 
 void executeOption(int option, bool* exit, Stack* odd, Queue* even, Queue* negative)
+//Once option is captured, process and execute it.
 {
     switch(option)
     {
-        case 1: processNumber(odd, even, negative);
+        case 1: processNumber(odd, even, negative);             //Option 1: insert a new number
                 break;
-        case 2: try{
-                std::cout<<odd->pop()<<std::endl;
-                    }catch(std::runtime_error r)
+        case 2: try{                                            //WARNING: Exceptions may occur
+                std::cout<<odd->pop()<<std::endl;               //Print the result of poping the stack
+                    }catch(std::runtime_error r)                //Handle the exception
                     {
-                        std::cout<<"Stack is empty."<<std::endl;
+                        std::cout<<"Stack is empty."<<std::endl;//Show error message
                         }
                 break;
-        case 3: showEven(even);
+        case 3: showEven(even);                                 //Show contents of even queue
                 break;
-        case 4: showNegative(negative);
+        case 4: showNegative(negative);                         //Show contents of negative queue
                 break;
-        case 5: Exit(exit, odd, even, negative);
+        case 5: Exit(exit, odd, even, negative);                //Exit program
                 break;
         default: std::cout<<"Invalid option.\nInsert new option."<<std::endl;
         }

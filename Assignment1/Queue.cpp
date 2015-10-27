@@ -61,10 +61,10 @@ long int Queue::dequeue(void)
 
 std::string Queue::list(void)
 {
-    std::string* str = new std::string();
-    std::ostringstream convert;
-    if(!empty()){
-    cellType* aux = front;
+    std::string* str = new std::string();   //String that will be returned
+    std::ostringstream convert;             //String stream to convert int
+    if(!empty()){                           //If it is not empty
+    cellType* aux = front;                  //Aux points to the front
     while(aux != NULL)                      //Stop loop when aux points to NULL
         {
             convert<<aux->value;            //Convert to string
