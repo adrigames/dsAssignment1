@@ -28,7 +28,6 @@ void parseLine(std::string line, Stack* odd, Queue* even, Queue* negative)
                     }
                 for(i=0; i<index; i++)
                 {
-                    std::cout<<lineArray[i]<<std::endl;
                     insertInStructure(lineArray[i], odd, even, negative);
                     }
     }
@@ -158,7 +157,12 @@ void executeOption(int option, bool* exit, Stack* odd, Queue* even, Queue* negat
     {
         case 1: processNumber(odd, even, negative);
                 break;
-        case 2: std::cout<<odd->pop()<<std::endl;
+        case 2: try{
+                std::cout<<odd->pop()<<std::endl;
+                    }catch(std::runtime_error r)
+                    {
+                        std::cout<<"Stack is empty."<<std::endl;
+                        }
                 break;
         case 3: showEven(even);
                 break;
@@ -208,7 +212,6 @@ int main(int argc, char **argv)
     Queue* even = new Queue();
     Queue* negative = new Queue();
     loadData(odd, even, negative);
-    system("PAUSE");
     while(!exit)        //Execution cycle
         drawMenu(&exit, odd, even, negative);
 	return 0;
