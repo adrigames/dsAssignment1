@@ -8,3 +8,4 @@ Assignment1/Debug/main.cpp.o.d
 *.d
 Assignment1/Stack.cpp
 *.hpp
+.codelite/refactoring.db
