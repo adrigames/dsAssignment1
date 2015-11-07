@@ -5,8 +5,8 @@
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\main.cpp" Name="FileName"/>
-      <int Value="179" Name="FirstVisibleLine"/>
-      <int Value="55" Name="CurrentLine"/>
+      <int Value="81" Name="FirstVisibleLine"/>
+      <int Value="91" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

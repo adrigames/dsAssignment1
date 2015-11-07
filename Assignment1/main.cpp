@@ -72,24 +72,24 @@ void saveData(Stack* odd, Queue* even, Queue* negative)
     std::ofstream output;
     std::cout<<"Converting stack..."<<std::endl;
     std::string data = createStackString(odd);
-    std::cout<<"Finished converting."<<std::endl;
+    std::cout<<"\t\t\tFinished converting."<<std::endl;
     data += '\n';
     std::cout<<"Converting even..."<<std::endl;
     data += even->list();
-    std::cout<<"Finished converting."<<std::endl;
+    std::cout<<"\t\t\tFinished converting."<<std::endl;
     data += '\n';
     std::cout<<"Converting negative..."<<std::endl;
     data += negative->list();
-    std::cout<<"Finished converting."<<std::endl;
+    std::cout<<"\t\t\tFinished converting."<<std::endl;
     data += '\n';
     std::cout<<"Opening file..."<<std::endl;
     output.open("output.numbers.txt");
     if(output.is_open())
     {
-        std::cout<<"File succesfully opened."<<std::endl;
+        std::cout<<"\t\t\tFile succesfully opened."<<std::endl;
         std::cout<<"Writing data..."<<std::endl;
         output<<data;
-        std::cout<<"Data successfully written."<<std::endl;
+        std::cout<<"\t\t\tData successfully written."<<std::endl;
         output.close();
         }
     else
@@ -117,15 +117,50 @@ void loadData(Stack* odd, Queue* even, Queue* negative)
             std::cout<<"ERROR: COULD NOT LOCATE INPUT FILE"<<std::endl;
             }
     }
+bool confirmExit()
+{
+    char option = ' ';
+    system("cls");
+    std::cout<<"Are you sure you want to exit?"<<std::endl<<"(Y/N)"<<std::endl;
+    std::cin>>option;
+    if(!std::cin.fail())
+    {
+        switch(option)
+        {
+            case 'Y': case 'y': return true;
+            case 'N': case 'n': std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            return false;
+            default:   std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::cout<<"\nThe input you provided is invalid."<<std::endl;
+                            std::cout<<"Please, provide a valid input."<<std::endl;
+                            system("pause");
+                            return confirmExit();                
+            }
+        }
+        else
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout<<"The input you provided is of an invalid type."<<std::endl;
+            std::cout<<"Please, insert a character."<<std::endl;
+            system("pause");
+            return confirmExit();
+            }
+    }
+
 void Exit(bool* exit, Stack* odd, Queue* even, Queue* negative)
 {
-    saveData(odd, even, negative);
-    delete(odd);
-    delete(even);
-    delete(negative);
-    *exit = true;
-    std::cout<<"Exiting program..."<<std::endl;
-    return;
+    if(confirmExit()){
+        saveData(odd, even, negative);
+        delete(odd);
+        delete(even);
+        delete(negative);
+        *exit = true;
+        std::cout<<"Exiting program..."<<std::endl;
+        return;
+        }
     }
     
 void processNumber(Stack* odd, Queue* even, Queue* negative)
@@ -198,9 +233,11 @@ void drawMenu(bool* exit, Stack* odd, Queue* even, Queue* negative)
     std::cout<<'\t'<<(char)186<<5<<(char)186<<\
     "EXIT"<<"\t\t\t"<<std::endl;
     std::cout<<'\t'<<(char)200<<(char)205<<(char)188<<std::endl<<std::endl;
-    std::cout<<"\t\tOption: ";
-    if(std::cin>>option)
+    std::cout<<"\t\tOption (you can enter batchs. If an option requires an argument, the following number will be taken as such): ";
+    if(std::cin>>option){
+        std::cout<<std::endl;
         executeOption(option, exit, odd, even, negative);
+        }
     else
     {
         std::cout<<"INPUT ERROR: INVALID INPUT"<<std::endl; //Throw error
