@@ -5,7 +5,7 @@
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\main.cpp" Name="FileName"/>
-      <int Value="105" Name="FirstVisibleLine"/>
+      <int Value="94" Name="FirstVisibleLine"/>
       <int Value="95" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
@@ -47,7 +47,7 @@
     </TabInfo>
     <TabInfo>
       <wxString Value="C:\Users\R\Documents\LabDS\Practice 1\Practice1\dsAssignment1\dsAssignment1\Assignment1\Queue.cpp" Name="FileName"/>
-      <int Value="60" Name="FirstVisibleLine"/>
+      <int Value="9" Name="FirstVisibleLine"/>
       <int Value="10" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
